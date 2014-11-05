@@ -17,7 +17,22 @@
  * @todo            Transfom the 2D coordinates in a 1D index and get the corresponding texel value
  */
 Color getTexel(unsigned char *pixels, int width, int height, int depth, int column, int row){
-    Color color(1.0, 1.0, 1.0);
+    Color color;
+    int posValue = (row*width+column)*depth;
+
+    switch(depth) {
+    case 1:
+        color = Color(pixels[posValue]/255);
+        break;
+    case 3:
+    case 4:
+        color = Color(pixels[posValue]/255, pixels[posValue+1]/255, pixels[posValue+2]/255);
+        break;
+    }
+    if(depth == 4) {
+        color = color * (pixels[posValue+3]/255);
+    }
+
     return color;
 }
 

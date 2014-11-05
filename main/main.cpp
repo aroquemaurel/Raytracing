@@ -18,8 +18,15 @@ Color compute_direct_lighting (Ray ray_, Isect isect_) {
     Color l;
 
     l = init_color (0.f, 0.f, 0.f);
+    Light *light_ = NULL;
 
- 
+    int nbLights =  nb_lights();
+    for(int i =0; i<nbLights ; i++){
+        light_ = get_light(i);
+        if(test_visibility(isect_, light_) == 1)
+            l = l + direct_lighting(ray_, isect_, light_);
+    }
+
     return l;
 
 }
@@ -56,10 +63,27 @@ Color trace_ray (Ray ray_) {
  * d'être ajoutée à la couleur renvoyée par trace_ray().
  *
 */
+    Color lightning = init_color (0.f, 0.f, 0.f);
+    Color rfl = init_color (0.f, 0.f, 0.f);
+    Color rfr = init_color (0.f, 0.f, 0.f);
 
-	Color l = init_color (0.f, 0.f, 0.f);
+    Ray ray_rfl, ray_rfr;
+    Isect isect_;
 
-	return l;
+    if(ray_importance(ray_) > 0.0001) { // condition d'arrêt
+        if(intersect_scene(&ray_, &isect_) == 1) {
+
+            if(isect_has_reflection(isect_) == 1)
+                rfl = multiply_color_color(trace_ray(ray_rfl), reflect(ray_, isect_, &ray_rfl));
+            if(isect_has_refraction(isect_) == 1)
+                rfr = multiply_color_color(trace_ray(ray_rfr), refract(ray_, isect_, &ray_rfr));
+            lightning = compute_direct_lighting(ray_, isect_);
+        } else {
+            return black();
+        }
+    }
+
+    return add_color_color(lightning, add_color_color(rfl, rfr));
 }
 
 /***************************************************/
@@ -79,6 +103,17 @@ void compute_image () {
  * Ce rayon est ensuite tracé dans la scène (par la fonction trace_ray())
  * et la couleur calculée à l'aide de ce rayon doit être stockée sur le pixel (x,y).
 */
+    Ray ray_;
+
+    int x_res, y_res;
+    get_image_resolution(&x_res, &y_res);
+
+    for(float x=0; x<x_res; ++x) {
+        for(float y=0; y<y_res; ++y) {
+                ray_ = camera_ray(x,y);
+                set_pixel_color(x,y,trace_ray(ray_));
+        }
+    }
 
 }
 
