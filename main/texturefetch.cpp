@@ -22,16 +22,17 @@ Color getTexel(unsigned char *pixels, int width, int height, int depth, int colu
 
     switch(depth) {
     case 1:
-        color = Color(pixels[posValue]/255);
+        color = Color((double)pixels[posValue]/255);
         break;
     case 3:
     case 4:
-        color = Color(pixels[posValue]/255, pixels[posValue+1]/255, pixels[posValue+2]/255);
+        color = Color((double)pixels[posValue]/255, (double)pixels[posValue+1]/255, (double)pixels[posValue+2]/255);
         break;
     }
     if(depth == 4) {
-        color = color * (pixels[posValue+3]/255);
+        color = color * ((double)pixels[posValue+3]/255);
     }
+
 
     return color;
 }
