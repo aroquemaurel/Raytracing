@@ -16,7 +16,7 @@
  * @return          The value of the texel
  * @todo            Transfom the 2D coordinates in a 1D index and get the corresponding texel value
  */
-Color getTexel(unsigned char *pixels, int width, int height, int depth, int column, int row){
+Color getTexel(unsigned char *pixels, int width, int height, int depth, int column, int row) {
     Color color;
     int posValue = (row*width+column)*depth;
 
@@ -47,7 +47,7 @@ Color getTexel(unsigned char *pixels, int width, int height, int depth, int colu
  * @param t         The row coordinate of the requested texel as a floating point
  * @return          The value of the interpolated texel
  */
-Color interpolateTexture(unsigned char *pixels, int width, int height, int depth, float s, float t){
+Color interpolateTexture(unsigned char *pixels, int width, int height, int depth, float s, float t) {
     Color q11, q12, q21, q22;
     Color r1, r2;
 
@@ -75,9 +75,8 @@ Color interpolateTexture(unsigned char *pixels, int width, int height, int depth
  * @param deltas    The size, in the column dimension, of the neighborood
  * @param deltat    The size, in the row dimension, of the neighborood
  * @return
- * @todo
  */
-Color integrateTexture(unsigned char *pixels, int width, int height, int depth, float s, float t, int deltas, int deltat){
+Color integrateTexture(unsigned char *pixels, int width, int height, int depth, float s, float t, int deltas, int deltat) {
     Color color;
 
     for (int i=s; i < s+deltas; ++i) {
@@ -98,6 +97,6 @@ Color integrateTexture(unsigned char *pixels, int width, int height, int depth, 
  * @param nblevels  Number of level to compute : nblevels = log2(min(width, height))
  * @return          if the array may be filled, return true, else return false
  */
-bool prefilterTexture(unsigned char **imagearray, int width, int height, int depth, int nblevels){
+bool prefilterTexture(unsigned char **imagearray, int width, int height, int depth, int nblevels) {
         return false;
 }
