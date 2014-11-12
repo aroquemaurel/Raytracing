@@ -78,7 +78,15 @@ Color interpolateTexture(unsigned char *pixels, int width, int height, int depth
  * @todo
  */
 Color integrateTexture(unsigned char *pixels, int width, int height, int depth, float s, float t, int deltas, int deltat){
-    return getTexel(pixels, width, height, depth, (int)std::floor(s), (int)std::floor(t));
+    Color color;
+
+    for (int i=s; i < s+deltas; ++i) {
+       for (int j=t; j < t+deltat; ++j) {
+           color = color + getTexel(pixels, width, height, depth, i, j);
+       }
+   }
+
+   return color * ((double)1 / (deltas*deltat));
 }
 
 /*
