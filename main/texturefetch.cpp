@@ -46,12 +46,21 @@ Color getTexel(unsigned char *pixels, int width, int height, int depth, int colu
  * @param s         The column coordinate of the requested texel as a floating point
  * @param t         The row coordinate of the requested texel as a floating point
  * @return          The value of the interpolated texel
- * @todo            Devoir 3, 2014 : From the floating point coordinates, compute the integer part and the fractional part. The integer part is the used to acces the 4 texels implied in the interpolation (One texel and its 3 up and right neighors), the fractional part is used to linearly interpolate from neighbors.
  */
 Color interpolateTexture(unsigned char *pixels, int width, int height, int depth, float s, float t){
-    return getTexel(pixels, width, height, depth, (int)std::floor(s), (int)std::floor(t));
+    Color q11, q12, q21, q22;
+    Color r1, r2;
 
+    // Values of four points (Q11, Q12, Q21, Q22)
+    q11 = getTexel(pixels, width, height, depth, s, t);
+    q12 = getTexel(pixels, width, height, depth, s, t+1);
+    q21 = getTexel(pixels, width, height, depth, s+1, t);
+    q22 = getTexel(pixels, width, height, depth, s+1, t+1);
 
+    r1 = (1-(s-std::floor(s)))*q11 + (s-std::floor(s))*q21;
+    r2 = (1-(s-std::floor(s)))*q12 + (s-std::floor(s))*q22;
+
+    return (1-(t-std::floor(t)))*r1 + (t-(std::floor(t)))*r2;
 }
 
 
