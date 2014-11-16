@@ -126,30 +126,31 @@ void setPixel(unsigned char *pixels, int coord, int depth, Color c) {
 bool prefilterTexture(unsigned char **imagearray, int width, int height,
                       int depth, int nblevels)
 {
-    int widthLevel = width;  // level width
-    int heightLevel = height; // level height
+    int widthLevel = width;
+    int heightLevel = height;
     Color buffColor;
 
-    for (int i=1; i < nblevels; ++i) {
+    for (int level=1; level < nblevels; ++level) {
         widthLevel /= 2;
         heightLevel /= 2;
 
         try {
-            imagearray[i] =  new unsigned char[width * height * depth];
+            imagearray[level] =  new unsigned char[width * height * depth];
         } catch(std::bad_alloc&) {
             return false;
         }
 
-        for (int c=0; c < widthLevel+1; ++c) {
-            for (int r=0; r < heightLevel+1; ++r) {
+        for (int c=0; c <= widthLevel; ++c) {
+            for (int r=0; r <= heightLevel; ++r) {
                 buffColor.reset();
-                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2, r*2);
-                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2+1, r*2);
-                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2, r*2+1);
-                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2+1, r*2+1);
+                for(int i = 2*c ; i <= 2*c+1 ; ++i) {
+                    for(int j = 2*r ; j <= 2*r+1 ; ++j) {
+                        buffColor += getTexel(imagearray[level-1], 2*widthLevel, 2*heightLevel, depth, i, j);
+                    }
+                }
 
                 buffColor *= (1./4);
-                setPixel(imagearray[i], c*depth*widthLevel + r*depth, depth, buffColor);
+                setPixel(imagearray[level], c*depth*widthLevel + r*depth, depth, buffColor);
             }
         }
 
