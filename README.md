@@ -1,4 +1,5 @@
 Raytracing
 ==========
 
-Project for OIM. Elementary operators for image synthesis.
+Project for OIM.
+elementary operator for raytracing in 3D images.
