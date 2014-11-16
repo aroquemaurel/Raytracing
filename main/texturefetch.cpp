@@ -30,7 +30,7 @@ Color getTexel(unsigned char *pixels, int width, int height, int depth, int colu
         break;
     }
     if(depth == 4) {
-        color = color * ((double)pixels[posValue+3]/255);
+        color *= ((double)pixels[posValue+3]/255);
     }
 
 
@@ -57,6 +57,7 @@ Color interpolateTexture(unsigned char *pixels, int width, int height, int depth
     q21 = getTexel(pixels, width, height, depth, s+1, t);
     q22 = getTexel(pixels, width, height, depth, s+1, t+1);
 
+    // r1 and r2 calculs
     r1 = (1-(s-std::floor(s)))*q11 + (s-std::floor(s))*q21;
     r2 = (1-(s-std::floor(s)))*q12 + (s-std::floor(s))*q22;
 
@@ -85,7 +86,32 @@ Color integrateTexture(unsigned char *pixels, int width, int height, int depth, 
        }
    }
 
-   return color * ((double)1 / (deltas*deltat));
+   return color * (1. / (deltas*deltat));
+}
+int gcd(int m, int n)     	// function definition
+{                         	// block begin
+   int  r;                	// declaration of remainder
+
+   while (n != 0) {       	// not equal
+      r = m % n;          	// modulus operator
+      m = n;              	// assignment
+      n = r;
+   }                      	// end while loop
+   return m;              	// exit gcd with value m
+}
+
+void setPixel(unsigned char *pixels, int coord, int depth, Color c) {
+    if (depth == 1) {
+        pixels[coord] = c[0] * 255;
+    } else {
+        pixels[coord] = c[0] * 255;
+        pixels[coord+1] = c[1] * 255;
+        pixels[coord+2] = c[2] * 255;
+
+        if (depth == 4) {
+            // FIXME, transprency problem
+        }
+    }
 }
 
 /*
@@ -97,6 +123,38 @@ Color integrateTexture(unsigned char *pixels, int width, int height, int depth, 
  * @param nblevels  Number of level to compute : nblevels = log2(min(width, height))
  * @return          if the array may be filled, return true, else return false
  */
-bool prefilterTexture(unsigned char **imagearray, int width, int height, int depth, int nblevels) {
-        return false;
+bool prefilterTexture(unsigned char **imagearray, int width, int height,
+                      int depth, int nblevels)
+{
+    int widthLevel = width;  // level width
+    int heightLevel = height; // level height
+    Color buffColor;
+
+    for (int i=1; i < nblevels; ++i) {
+        widthLevel /= 2;
+        heightLevel /= 2;
+
+        try {
+            imagearray[i] =  new unsigned char[width * height * depth];
+        } catch(std::bad_alloc&) {
+            return false;
+        }
+
+        for (int c=0; c < widthLevel+1; ++c) {
+            for (int r=0; r < heightLevel+1; ++r) {
+                buffColor.reset();
+                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2, r*2);
+                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2+1, r*2);
+                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2, r*2+1);
+                buffColor += getTexel(imagearray[i-1], 2*widthLevel, 2*heightLevel, depth, c*2+1, r*2+1);
+
+                buffColor *= (1./4);
+                setPixel(imagearray[i], c*depth*widthLevel + r*depth, depth, buffColor);
+            }
+        }
+
+    }
+
+    return true;
 }
+

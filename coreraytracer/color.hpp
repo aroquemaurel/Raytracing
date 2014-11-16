@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 /** @ingroup Raytracer 
  *  Color management
  */
@@ -40,11 +40,20 @@ public:
 		return m_comps[i_];
 	}
 
-	Color operator+ (const Color& other_) const {
+    Color operator+ (const Color& other_) const {
 		return Color (m_comps[0] + other_.m_comps[0],
 					  m_comps[1] + other_.m_comps[1],
 					  m_comps[2] + other_.m_comps[2]);
 	}
+
+    Color& operator+= (const Color &obj)
+    {
+        Color c = obj + (*this);
+        m_comps[0] = c[0];
+        m_comps[1] = c[1];
+        m_comps[2] = c[2];
+        return *this;
+    }
 
 	Color operator* (const Color& other_) const {
 		return Color (m_comps[0] * other_.m_comps[0],
@@ -52,14 +61,29 @@ public:
 					  m_comps[2] * other_.m_comps[2]);		
 	}
 
-	Color operator* (float v_) const {
-		return Color (m_comps[0] * v_,
+    Color operator* (float v_) const {
+        return Color (m_comps[0] * v_,
 					  m_comps[1] * v_,
-					  m_comps[2] * v_);
+                      m_comps[2] * v_);
 	}
 
     friend Color operator*(float v_, const Color&c){
         return Color(c*v_);
+    }
+
+    Color operator *= (const float &obj)
+    {
+        Color c = obj * (*this);
+        m_comps[0] = c[0];
+        m_comps[1] = c[1];
+        m_comps[2] = c[2];
+        return *this;
+    }
+
+    void reset() {
+        m_comps[0] = 0.f;
+        m_comps[1] = 0.f;
+        m_comps[2] = 0.f;
     }
 
 	bool is_zero () const {
@@ -68,5 +92,5 @@ public:
 
 	float avg () const {
 		return (m_comps[0] + m_comps[1] + m_comps[2]) * 0.3333f;
-	}
+    }
 };
