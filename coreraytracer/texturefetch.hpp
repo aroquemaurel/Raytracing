@@ -122,3 +122,11 @@ Color integrateTexture(unsigned char *pixels, int width, int height, int depth, 
  * @return          if the array may be filled, return true, else return false
  */
 bool prefilterTexture(unsigned char **imagearray, int width, int height, int depth, int nblevels);
+/**
+ * @brief setPixel Change the value of a pixel
+ * @param pixels The pixels array
+ * @param coord Coordonate of pixel in vector
+ * @param depth     Depth of the image (number of component by texel)
+ * @param c The color of new pixel
+ */
+void setPixel(unsigned char *pixels, int coord, int depth, Color c);

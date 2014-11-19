@@ -100,6 +100,13 @@ int gcd(int m, int n)     	// function definition
    return m;              	// exit gcd with value m
 }
 
+/**
+ * @brief setPixel Change the value of a pixel
+ * @param pixels The pixels array
+ * @param coord Coordonate of pixel in vector
+ * @param depth     Depth of the image (number of component by texel)
+ * @param c The color of new pixel
+ */
 void setPixel(unsigned char *pixels, int coord, int depth, Color c) {
     if (depth == 1) {
         pixels[coord] = c[0] * 255;
@@ -107,10 +114,6 @@ void setPixel(unsigned char *pixels, int coord, int depth, Color c) {
         pixels[coord] = c[0] * 255;
         pixels[coord+1] = c[1] * 255;
         pixels[coord+2] = c[2] * 255;
-
-        if (depth == 4) {
-            // FIXME, transprency problem
-        }
     }
 }
 
