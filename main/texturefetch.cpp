@@ -88,17 +88,6 @@ Color integrateTexture(unsigned char *pixels, int width, int height, int depth, 
 
    return color * (1. / (deltas*deltat));
 }
-int gcd(int m, int n)     	// function definition
-{                         	// block begin
-   int  r;                	// declaration of remainder
-
-   while (n != 0) {       	// not equal
-      r = m % n;          	// modulus operator
-      m = n;              	// assignment
-      n = r;
-   }                      	// end while loop
-   return m;              	// exit gcd with value m
-}
 
 /**
  * @brief setPixel Change the value of a pixel
