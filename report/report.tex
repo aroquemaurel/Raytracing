@@ -37,10 +37,17 @@
 	\section{Avant-propos}
 	L'archive que vous avez obtenu sur Moodle contient plusieurs fichiers organisés comme suit : 
 	\begin{description}
-		\item[\texttt{src/}] Contient uniquement les fichiers modifiés, c'est-à-dire \texttt{main.cpp} et \texttt{texturefetch.cpp}.
+		\item[\texttt{src/}] Contient uniquement les fichiers modifiés, c'est-à-dire \texttt{main.cpp}, \texttt{texturefetch.cpp} et \texttt{color.hpp}.
 		\item[\texttt{report\_AntoinedeRoquemaurel.pdf}] Le présent rapport que vous êtes en train de lire
 	\end{description}
-	%% TODO talk about Color and +=, *=, reset.
+
+	Comme vous avez pu le voir, j'ai choisi de modifier la classe \texttt{Color}. Ces modifications n'étaient pas indispensables, mais permettait d'améliorer la
+	lecture du code. Ainsi j'ai ajouté 3 méthodes : 
+	\begin{itemize}
+		\item Opérateur \texttt{+=}, permettant d'éviter de faire \texttt{color = color + other}, le \texttt{+=} est plus rapide et facile à lire.
+		\item De la même manière, l'opérateur \texttt{*=}.
+		\item Méthode \texttt{reset()} qui remet toutes les composantes à \texttt{0.f}.
+	\end{itemize}
 
 	\section{Opérateur \texttt{getTextel()}}
 	Une fois les textures intégrés, on peut observer un effet << d'escalier >> sur le quadrillage de l'image, principalement au premier plan, comme le montre la
@@ -53,8 +60,9 @@
 		\label{fig:fig1}
 	\end{figure}
 	Cela vient du fait que nous essayons d'intégrer une texture 2D sur des figures 3D. Afin de bien représenter une profondeur sur nos textures 2D, nous les
-	avons déformés afin que sa taille en premier plan soit plus grande que la taille en arrière plan. C'est cette transformation qui créer un effet de crênelage
-	sur le devant de la scène.
+	avons déformés afin que sa taille en premier plan soit plus grande que la taille en arrière plan. C'est cette transformation qui créer un effet de
+	\textit{crênelage} sur le devant de la scène.
+
 	\section{Opérateur d'interpolation linéaire pour l'accès à un élément de texture}
 	\begin{figure}[H]
 		\centering
@@ -63,9 +71,10 @@
 		\label{fig:fig1}
 	\end{figure}
 	\section{Opérateur d'intégration pour le filtrage de texture}
-	% TODO talk about execution time
-	% ✘ aroquemaurel@Luffy  ~/projets/cpp/raytracing/bin   master ●  time ./main
-	% ./main  13,19s user 0,04s system 98% cpu 13,459 total
+\begin{lstlisting}[language=Sh]
+aroquemaurel@Luffy ~/projets/cpp/raytracing/bin <master> time ./main
+./main  13,19s user 0,04s system 98% cpu 13,459 total
+\end{lstlisting}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=12cm]{3-monimage.png}
@@ -73,9 +82,20 @@
 		\label{fig:fig1}
 	\end{figure}
 	\section{Opérateur de pré-filtrage de texture}
+	% TODO of features… :-p
 	% TODO talk about execution time
-	%  ✘ aroquemaurel@Luffy  ~/projets/cpp/raytracing/bin   master ●  time ./main
-	% ./main  3,09s user 0,03s system 94% cpu 3,300 total
+
+	Après le développement de cette fonciton, le temps d'exécution a été divisé par plus de 4 ! 
+\begin{lstlisting}[language=Sh]
+aroquemaurel@Luffy ~/projets/cpp/raytracing/bin <master> time ./main
+./main  3,09s user 0,03s system 94% cpu 3,300 total
+\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=12cm]{3-monimage.png}
+		\caption{Image obtenue après le développement de \texttt{prefilterTexture()}}
+		\label{fig:fig1}
+	\end{figure}
 
 	\section{Analyse et estimation des limites des techniques de filtrage implantées}
 	% TODO Google search !

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.3.1)  15 NOV 2014 18:45
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.3.1)  19 NOV 2014 22:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1393,6 +1393,9 @@ LaTeX Warning: Label `fig:fig1' multiply defined.
 
 LaTeX Warning: Label `fig:fig1' multiply defined.
 
+
+LaTeX Warning: Label `fig:fig1' multiply defined.
+
 )
 \openout1 = `report.aux'.
 
@@ -1525,29 +1528,74 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 
 
 LaTeX Font Warning: Font shape `T1/lmtt/bc/n' undefined
-(Font)              using `T1/lmtt/m/n' instead on input line 43.
+(Font)              using `T1/lmtt/m/n' instead on input line 52.
 
 <1-monimage.png, id=32, 963.6pt x 542.025pt>
 File: 1-monimage.png Graphic file (type png)
  <use 1-monimage.png>
-Package pdftex.def Info: 1-monimage.png used on input line 49.
+Package pdftex.def Info: 1-monimage.png used on input line 58.
 (pdftex.def)             Requested size: 341.43306pt x 192.05217pt.
 
 <2-monimage.png, id=33, 963.6pt x 542.025pt>
 File: 2-monimage.png Graphic file (type png)
  <use 2-monimage.png>
-Package pdftex.def Info: 2-monimage.png used on input line 59.
+Package pdftex.def Info: 2-monimage.png used on input line 68.
 (pdftex.def)             Requested size: 341.43306pt x 192.05217pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./1-monimage.png (PNG copy
 )>]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 75.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 75.
+
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 75.
+
+
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 75.
+
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 75.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 75.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 75.
+LaTeX Font Info:    Try loading font information for U+msa on input line 75.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 75.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
 <3-monimage.png, id=50, 963.6pt x 542.025pt>
 File: 3-monimage.png Graphic file (type png)
  <use 3-monimage.png>
-Package pdftex.def Info: 3-monimage.png used on input line 66.
+Package pdftex.def Info: 3-monimage.png used on input line 80.
 (pdftex.def)             Requested size: 341.43306pt x 192.05217pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 73.
+File: 3-monimage.png Graphic file (type png)
+
+<use 3-monimage.png>
+Package pdftex.def Info: 3-monimage.png used on input line 95.
+(pdftex.def)             Requested size: 341.43306pt x 192.05217pt.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1556,10 +1604,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2 <./2-monimage.png (PNG copy)> <./3-monimage.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 73.
- (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 73.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 73.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
+ [3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+
+(./report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 4274BDC5301D118AF92122E9276AA5BD;510.
 
@@ -1569,29 +1620,30 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 73.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 102.
  ) 
 Here is how much of TeX's memory you used:
- 30088 strings out of 494232
- 602429 string characters out of 3160025
- 728024 words of memory out of 3000000
- 32721 multiletter control sequences out of 15000+200000
- 41129 words of font info for 37 fonts, out of 3000000 for 9000
+ 30596 strings out of 494232
+ 607957 string characters out of 3160025
+ 769372 words of memory out of 3000000
+ 33181 multiletter control sequences out of 15000+200000
+ 60001 words of font info for 57 fonts, out of 3000000 for 9000
  462 hyphenation exceptions out of 8191
- 56i,12n,74p,1031b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,12n,74p,1031b,1473s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist
 /fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/
 share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/publ
 ic/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/avantgar/uagk8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmr8a.pfb>
-Output written on report.pdf (2 pages, 1237226 bytes).
+/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmr8a.pfb>
+Output written on report.pdf (3 pages, 1271750 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 117 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
+ 20 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
