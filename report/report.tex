@@ -64,6 +64,10 @@
 	\textit{crênelage} sur le devant de la scène.
 
 	\section{Opérateur d'interpolation linéaire pour l'accès à un élément de texture}
+	Afin d'améliorer la qualité de notre image, nous avons effectué une interpolation linéaire des pixels voisins. Le but de ce calcul est de prendre en compte
+	les voisins pour afficher notre pixel, ainsi cela va créer un effet « d'adoucissement » dans les zones à fort contraste : le quadrillage par exemple.
+
+	C'est ainsi que notre quadrillage va maintenant avoir un effet de << flou >> cachant le crénelage précédent. 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=12cm]{2-monimage.png}
@@ -71,21 +75,31 @@
 		\label{fig:fig1}
 	\end{figure}
 	\section{Opérateur d'intégration pour le filtrage de texture}
-\begin{lstlisting}[language=Sh]
-aroquemaurel@Luffy ~/projets/cpp/raytracing/bin <master> time ./main
-./main  13,19s user 0,04s system 98% cpu 13,459 total
-\end{lstlisting}
+	Une fois cette fonction développée, le temps d'exécution à grimpé en flèche comme le montre le listing \ref{lst:time1}.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=12cm]{3-monimage.png}
 		\caption{Image obtenue après le développement de \texttt{integrateTexture()}}
 		\label{fig:fig1}
 	\end{figure}
+
+	En effet, cette fonction par sa simple programmation va effectuer énormément de calculs : calculer pour chaque pixels voisins une moyenne de leur couleur,
+	ainsi pour chaque groupe de pixels nous allons faire une division, opération très couteuse. Plus l'image est grande et possède un delta important, plus
+	l'opération sera longue.
+
+	Cette opération est cependant très bénéfique : elle va permettre de supprimer les problèmes de qualité présents jusqu'à maintenant, principalement le noir
+	présent en haut du cône. 
+
+	Cela est réalisé grâce à cette fonction qui l'a colorié en fonction de ces voisins.
+	\begin{lstlisting}[language=Sh, label=lst:time1, caption=Temps d'execution avec \texttt{interpolateTexture}]
+aroquemaurel@Luffy ~/projets/cpp/raytracing/bin <master> time ./main
+./main  13,19s user 0,04s system 98% cpu 13,459 total
+\end{lstlisting}
 	\section{Opérateur de pré-filtrage de texture}
 	% TODO of features… :-p
 	% TODO talk about execution time
 
-	Après le développement de cette fonciton, le temps d'exécution a été divisé par plus de 4 ! 
+	Après le développement de cette fonction, le temps d'exécution a été divisé par plus de 4 ! 
 \begin{lstlisting}[language=Sh]
 aroquemaurel@Luffy ~/projets/cpp/raytracing/bin <master> time ./main
 ./main  3,09s user 0,03s system 94% cpu 3,300 total
