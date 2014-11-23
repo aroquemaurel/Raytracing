@@ -38,15 +38,16 @@
 	L'archive que vous avez obtenu sur Moodle contient plusieurs fichiers organisés comme suit : 
 	\begin{description}
 		\item[\texttt{src/}] Contient uniquement les fichiers modifiés, c'est-à-dire \texttt{main.cpp}, \texttt{texturefetch.cpp} et \texttt{color.hpp}.
+		\item[\texttt{images/}] Contient les différentes images produites lors de ce projet
 		\item[\texttt{report\_AntoinedeRoquemaurel.pdf}] Le présent rapport que vous êtes en train de lire
 	\end{description}
 
 	Comme vous avez pu le voir, j'ai choisi de modifier la classe \texttt{Color}. Ces modifications n'étaient pas indispensables, mais permettait d'améliorer la
 	lecture du code. Ainsi j'ai ajouté 3 méthodes : 
 	\begin{itemize}
-		\item Opérateur \texttt{+=}, permettant d'éviter de faire \texttt{color = color + other}, le \texttt{+=} est plus rapide et facile à lire.
+		\item Opérateur \texttt{+=}, permettant d'éviter de faire \texttt{color = color + other}, le \texttt{+=} est plus facile à lire.
 		\item De la même manière, l'opérateur \texttt{*=}.
-		\item Méthode \texttt{reset()} qui remet toutes les composantes à \texttt{0.f}.
+		\item Méthode \texttt{reset()} qui remet toutes les composantes à \texttt{0.f} évitant de créer une nouvelle instance de \texttt{Color}.
 	\end{itemize}
 
 	\section{Opérateur \texttt{getTextel()}}
@@ -55,7 +56,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=12cm]{1-monimage.png}
+		\includegraphics[width=13cm]{images/1-monimage.png}
 		\caption{Image obtenue après le développement de \texttt{getTextel()}}
 		\label{fig:fig1}
 	\end{figure}
@@ -70,7 +71,7 @@
 	C'est ainsi que notre quadrillage va maintenant avoir un effet de << flou >> cachant le crénelage précédent. 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=12cm]{2-monimage.png}
+		\includegraphics[width=13cm]{images/2-monimage.png}
 		\caption{Image obtenue après le développement de \texttt{interpolateTexture()}}
 		\label{fig:fig1}
 	\end{figure}
@@ -78,39 +79,62 @@
 	Une fois cette fonction développée, le temps d'exécution à grimpé en flèche comme le montre le listing \ref{lst:time1}.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=12cm]{3-monimage.png}
+		\includegraphics[width=13cm]{images/3-monimage.png}
 		\caption{Image obtenue après le développement de \texttt{integrateTexture()}}
 		\label{fig:fig1}
 	\end{figure}
+	Cette méthode, par les calculs d'interpolation, permet d'effectuer un dégradé de flou au fond de l'image. Le flou s'applique ainsi en fonction de
+	la profondeur : plus on est loin du 1$^{er}$ plan, plus l'image sera flou, c'est ainsi que nous avons une meilleure impression de profondeur.
 
-	En effet, cette fonction par sa simple programmation va effectuer énormément de calculs : calculer pour chaque pixels voisins une moyenne de leur couleur,
-	ainsi pour chaque groupe de pixels nous allons faire une division, opération très couteuse. Plus l'image est grande et possède un delta important, plus
-	l'opération sera longue.
-
-	Cette opération est cependant très bénéfique : elle va permettre de supprimer les problèmes de qualité présents jusqu'à maintenant, principalement le noir
-	présent en haut du cône. 
-
-	Cela est réalisé grâce à cette fonction qui l'a colorié en fonction de ces voisins.
 	\begin{lstlisting}[language=Sh, label=lst:time1, caption=Temps d'execution avec \texttt{interpolateTexture}]
 aroquemaurel@Luffy ~/projets/cpp/raytracing/bin <master> time ./main
-./main  13,19s user 0,04s system 98% cpu 13,459 total
-\end{lstlisting}
-	\section{Opérateur de pré-filtrage de texture}
-	% TODO of features… :-p
-	% TODO talk about execution time
+./main  18,92s user 0,03s system 99% cpu 19,010 total
 
-	Après le développement de cette fonction, le temps d'exécution a été divisé par plus de 4 ! 
+\end{lstlisting}
+Comme dit précédemment, cette méthode à l'inconvénient de ralentir considérablement le temps d'exécution. Cela vient des calculs nécessaires pour
+cette interpolation, notamment un grand nombre de division.
+
+\section{Opérateur de pré-filtrage de texture}\label{diminution}
+	Cette fonction n'avait pas pour but d'améliorer l'image, mais uniquement de réduire le temps d'exécution. Cela a été un succès, après le développement de cette fonction, le temps d'exécution a été divisé par plus de 4 ! 
 \begin{lstlisting}[language=Sh]
 aroquemaurel@Luffy ~/projets/cpp/raytracing/bin <master> time ./main
-./main  3,09s user 0,03s system 94% cpu 3,300 total
+./main  4,00s user 0,02s system 99% cpu 4,028 total
 \end{lstlisting}
+
+Grâce à cette méthode, nous avons réussi à atteindre un temps d'exécution convenable vis-à-vis de la qualité de l'image que nous avons obtenus comme
+le montre la courbe figure \ref{fig:tpsCalcul}.
+% 3.3992
+% 4.028
+% 18.92
+% 4.9
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=.7]
+		\begin{axis}[xtick={1,20,40,60},xlabel={\textbf{Fonction}}, 
+			ylabel={\textbf{Tempx d'éxecution (s)}}, 
+			xticklabels={\texttt{getTextel()}, \texttt{interpolateTexture()}, \texttt{integrateTexture()},\texttt{prefilterTexture()}}, width=18cm]
+			\addplot coordinates{(1,3.3992)(20,4.028)(40,18.92)(60,4.9)};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Temps d'exécution des techniques d'améliorations de l'image}
+	\label{fig:tpsCalcul}
+\end{figure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=12cm]{3-monimage.png}
+		\includegraphics[width=13cm]{images/4-monimage.png}
 		\caption{Image obtenue après le développement de \texttt{prefilterTexture()}}
 		\label{fig:fig1}
 	\end{figure}
 
 	\section{Analyse et estimation des limites des techniques de filtrage implantées}
-	% TODO Google search !
+	La méthode que nous avons implémenté à permis d'améliorer considérablement l'image, ceci en créant des effets de flous et en lisant les effets de
+	crénelage. 
+
+	Cependant, cette méthode est loin d'être parfaite, en effet en premier lieu, il y a une perte d'information, notamment avec la moyenne des pixels
+	voisins. Également, le temps d'exécution est assez important, et très gourmand en ressource, particulièrement pour de grandes images en HD. Ce
+	temps de calcul a été diminué grâce à la section \ref{diminution}, mais cela reste assez important.
+
+
+
 \end{document}
