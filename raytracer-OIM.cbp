@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="raytracer-OIM" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\coreraytracer\;CMake Files\main\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/aroquemaurel/projets/cpp/raytracing" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/aroquemaurel/projets/cpp/raytracing" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="raytracing">
+         <Option output="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/libraytracing.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/include/OpenEXR" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 raytracing" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="raytracing/fast">
+         <Option output="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/libraytracing.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/include/OpenEXR" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 raytracing/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="main">
+         <Option output="/home/aroquemaurel/projets/cpp/raytracing/bin/main" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/aroquemaurel/projets/cpp/raytracing/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/aroquemaurel/projets/cpp/raytracing/main/../coreraytracer" />
+            <Add directory="/usr/include/OpenEXR" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 main" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="main/fast">
+         <Option output="/home/aroquemaurel/projets/cpp/raytracing/bin/main" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/aroquemaurel/projets/cpp/raytracing/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/aroquemaurel/projets/cpp/raytracing/main/../coreraytracer" />
+            <Add directory="/usr/include/OpenEXR" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 main/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/aroquemaurel/projets/cpp/raytracing/main/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/intervaloperators.cpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.cpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/texture.cpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/main/main.cpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/main/texturefetch.cpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/._texturefetch.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/box.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/bsdf.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/camera.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/color.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/cone.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/csg.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/cylinder.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/diff_geom.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/geometry.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/glass.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/glossy.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/image.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/intervaloperators.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/intervalset.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/isect.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/light.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/material.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/matte.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/metal.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/plane.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/plastic.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/primitive.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/ray.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.h">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/scene.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/sphere.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/texture.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/texturefetch.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/vector3d.hpp">
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/coreraytracer/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\coreraytracer\" />
+      </Unit>
+      <Unit filename="/home/aroquemaurel/projets/cpp/raytracing/main/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\main\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

@@ -75,32 +75,9 @@ coreraytracer/CMakeFiles/raytracing.dir/intervaloperators.cpp.o.provides: corera
 
 coreraytracer/CMakeFiles/raytracing.dir/intervaloperators.cpp.o.provides.build: coreraytracer/CMakeFiles/raytracing.dir/intervaloperators.cpp.o
 
-coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o: coreraytracer/CMakeFiles/raytracing.dir/flags.make
-coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o: coreraytracer/raytracing.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/aroquemaurel/projets/cpp/raytracing/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o"
-	cd /home/aroquemaurel/projets/cpp/raytracing/coreraytracer && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raytracing.dir/raytracing.cpp.o -c /home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.cpp
-
-coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracing.dir/raytracing.cpp.i"
-	cd /home/aroquemaurel/projets/cpp/raytracing/coreraytracer && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.cpp > CMakeFiles/raytracing.dir/raytracing.cpp.i
-
-coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracing.dir/raytracing.cpp.s"
-	cd /home/aroquemaurel/projets/cpp/raytracing/coreraytracer && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.cpp -o CMakeFiles/raytracing.dir/raytracing.cpp.s
-
-coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires:
-.PHONY : coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires
-
-coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires
-	$(MAKE) -f coreraytracer/CMakeFiles/raytracing.dir/build.make coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides.build
-.PHONY : coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides
-
-coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides.build: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o
-
 coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o: coreraytracer/CMakeFiles/raytracing.dir/flags.make
 coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o: coreraytracer/texture.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/aroquemaurel/projets/cpp/raytracing/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/aroquemaurel/projets/cpp/raytracing/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o"
 	cd /home/aroquemaurel/projets/cpp/raytracing/coreraytracer && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raytracing.dir/texture.cpp.o -c /home/aroquemaurel/projets/cpp/raytracing/coreraytracer/texture.cpp
 
@@ -121,18 +98,41 @@ coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o.provides: coreraytracer/CM
 
 coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o.provides.build: coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o
 
+coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o: coreraytracer/CMakeFiles/raytracing.dir/flags.make
+coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o: coreraytracer/raytracing.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/aroquemaurel/projets/cpp/raytracing/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o"
+	cd /home/aroquemaurel/projets/cpp/raytracing/coreraytracer && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raytracing.dir/raytracing.cpp.o -c /home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.cpp
+
+coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracing.dir/raytracing.cpp.i"
+	cd /home/aroquemaurel/projets/cpp/raytracing/coreraytracer && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.cpp > CMakeFiles/raytracing.dir/raytracing.cpp.i
+
+coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracing.dir/raytracing.cpp.s"
+	cd /home/aroquemaurel/projets/cpp/raytracing/coreraytracer && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/aroquemaurel/projets/cpp/raytracing/coreraytracer/raytracing.cpp -o CMakeFiles/raytracing.dir/raytracing.cpp.s
+
+coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires:
+.PHONY : coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires
+
+coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires
+	$(MAKE) -f coreraytracer/CMakeFiles/raytracing.dir/build.make coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides.build
+.PHONY : coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides
+
+coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.provides.build: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o
+
 # Object files for target raytracing
 raytracing_OBJECTS = \
 "CMakeFiles/raytracing.dir/intervaloperators.cpp.o" \
-"CMakeFiles/raytracing.dir/raytracing.cpp.o" \
-"CMakeFiles/raytracing.dir/texture.cpp.o"
+"CMakeFiles/raytracing.dir/texture.cpp.o" \
+"CMakeFiles/raytracing.dir/raytracing.cpp.o"
 
 # External object files for target raytracing
 raytracing_EXTERNAL_OBJECTS =
 
 coreraytracer/libraytracing.a: coreraytracer/CMakeFiles/raytracing.dir/intervaloperators.cpp.o
-coreraytracer/libraytracing.a: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o
 coreraytracer/libraytracing.a: coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o
+coreraytracer/libraytracing.a: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o
 coreraytracer/libraytracing.a: coreraytracer/CMakeFiles/raytracing.dir/build.make
 coreraytracer/libraytracing.a: coreraytracer/CMakeFiles/raytracing.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libraytracing.a"
@@ -144,8 +144,8 @@ coreraytracer/CMakeFiles/raytracing.dir/build: coreraytracer/libraytracing.a
 .PHONY : coreraytracer/CMakeFiles/raytracing.dir/build
 
 coreraytracer/CMakeFiles/raytracing.dir/requires: coreraytracer/CMakeFiles/raytracing.dir/intervaloperators.cpp.o.requires
-coreraytracer/CMakeFiles/raytracing.dir/requires: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires
 coreraytracer/CMakeFiles/raytracing.dir/requires: coreraytracer/CMakeFiles/raytracing.dir/texture.cpp.o.requires
+coreraytracer/CMakeFiles/raytracing.dir/requires: coreraytracer/CMakeFiles/raytracing.dir/raytracing.cpp.o.requires
 .PHONY : coreraytracer/CMakeFiles/raytracing.dir/requires
 
 coreraytracer/CMakeFiles/raytracing.dir/clean:

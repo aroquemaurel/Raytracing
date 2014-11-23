@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/raytracing.dir/intervaloperators.cpp.o"
-  "CMakeFiles/raytracing.dir/raytracing.cpp.o"
   "CMakeFiles/raytracing.dir/texture.cpp.o"
+  "CMakeFiles/raytracing.dir/raytracing.cpp.o"
   "libraytracing.pdb"
   "libraytracing.a"
 )
