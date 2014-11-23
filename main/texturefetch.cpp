@@ -1,10 +1,7 @@
 #include "texturefetch.hpp"
 #include <iostream>
 
-/*
- *  Pour la documentation de ces fonctions, se rapporter à la page "Textures" de la documentation
- */
-/*
+/**
  * @brief getTexel Get a single texel from a texture.
  * This function access the texture at coordinates (row, column) and fetch the value of the corresponding texel (pixel from a texture)
  * @param pixels    The image to access, organized as a linear array of texel arranged by row
@@ -14,7 +11,6 @@
  * @param row       Row coordinate of the requested texel
  * @param column    Column coordinate of the requested texel
  * @return          The value of the texel
- * @todo            Transfom the 2D coordinates in a 1D index and get the corresponding texel value
  */
 Color getTexel(unsigned char *pixels, int width, int height, int depth, int column, int row) {
     Color color;
@@ -22,22 +18,18 @@ Color getTexel(unsigned char *pixels, int width, int height, int depth, int colu
 
     switch(depth) {
     case 1:
-        color = Color((double)pixels[posValue]/255);
+        color = Color((double)pixels[posValue]/255.);
         break;
     case 3:
     case 4:
-        color = Color((double)pixels[posValue]/255, (double)pixels[posValue+1]/255, (double)pixels[posValue+2]/255);
+        color = Color((double)pixels[posValue]/255., (double)pixels[posValue+1]/255., (double)pixels[posValue+2]/255.);
         break;
     }
-    if(depth == 4) {
-        color *= ((double)pixels[posValue+3]/255);
-    }
-
 
     return color;
 }
 
-/*
+/**
  * @brief interpolateTexture Get a texel linearly interpolated from its neighbors
  * @param pixels    The image to access, organized as a linear array of texel arranged by row
  * @param width     Width of the image
@@ -65,7 +57,7 @@ Color interpolateTexture(unsigned char *pixels, int width, int height, int depth
 }
 
 
-/*
+/**
  * @brief integrateTexture Get a texel by computing the mean of the color on a neighborood of size (deltas x deltat)
  * @param pixels    The image to access, organized as a linear array of texel arranged by row
  * @param width     Width of the image
@@ -98,15 +90,15 @@ Color integrateTexture(unsigned char *pixels, int width, int height, int depth, 
  */
 void setPixel(unsigned char *pixels, int coord, int depth, Color c) {
     if (depth == 1) {
-        pixels[coord] = c[0] * 255;
+        pixels[coord] = c[0] * 255.;
     } else {
-        pixels[coord] = c[0] * 255;
-        pixels[coord+1] = c[1] * 255;
-        pixels[coord+2] = c[2] * 255;
+        pixels[coord] = c[0] * 255.;
+        pixels[coord+1] = c[1] * 255.;
+        pixels[coord+2] = c[2] * 255.;
     }
 }
 
-/*
+/**
  * @brief prefilterTexture Compute an array of images with geometrically decreasing resolution from the original image.
  * @param imagearray The array of images to compute. element at index 0 in this array is the full resolution image and must not be modified
  * @param width     Width of the full resolution image
@@ -115,9 +107,7 @@ void setPixel(unsigned char *pixels, int coord, int depth, Color c) {
  * @param nblevels  Number of level to compute : nblevels = log2(min(width, height))
  * @return          if the array may be filled, return true, else return false
  */
-bool prefilterTexture(unsigned char **imagearray, int width, int height,
-                      int depth, int nblevels)
-{
+bool prefilterTexture(unsigned char **imagearray, int width, int height, int depth, int nblevels) {
     int widthLevel = width;
     int heightLevel = height;
     Color buffColor;
@@ -132,17 +122,17 @@ bool prefilterTexture(unsigned char **imagearray, int width, int height,
             return false;
         }
 
-        for (int c=0; c <= widthLevel; ++c) {
-            for (int r=0; r <= heightLevel; ++r) {
+        for (int c=0; c <= widthLevel+1; ++c) {
+            for (int r=0; r <= heightLevel+1; ++r) {
                 buffColor.reset();
-                for(int i = 2*c ; i <= 2*c+1 ; ++i) {
-                    for(int j = 2*r ; j <= 2*r+1 ; ++j) {
-                        buffColor += getTexel(imagearray[level-1], 2*widthLevel, 2*heightLevel, depth, i, j);
+                for(int j = 2*r ; j <= 2*r+1 ; ++j) {
+                    for(int i = 2*c ; i <= 2*c+1 ; ++i) {
+                        buffColor += getTexel(imagearray[level-1], 2*widthLevel, 2*heightLevel, depth, i%height, j%width);
                     }
                 }
 
-                buffColor *= (1./4);
-                setPixel(imagearray[level], c*depth*widthLevel + r*depth, depth, buffColor);
+                buffColor *= (1./4.);
+                setPixel(imagearray[level], r*depth*widthLevel + c*depth, depth, buffColor);
             }
         }
 
@@ -150,4 +140,3 @@ bool prefilterTexture(unsigned char **imagearray, int width, int height,
 
     return true;
 }
-

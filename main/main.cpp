@@ -270,7 +270,7 @@ int main () {
 // creation scene test pour devoir numero 3 : a decomenter pour le devoir
 // résolution de test : 1/2 HD --> attention au temps de calcul en cours de devoir si vous augmentez cette résolution (cf sujet)
     make_textured_scene(960, 540);
-    // resolution HD
+//     resolution HD
 //    make_textured_scene(1920, 1080);
 
 	compute_image();
